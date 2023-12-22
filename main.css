@@ -1,0 +1,268 @@
+body {
+    background: #F3F2FA;
+}
+
+header {
+    height: 80px;
+    padding: 28px 76px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #E4E3EB;
+    background: #FFF;
+    align-items: center;
+    width: 100%;
+} 
+
+.catButton.active {
+    border: 1px solid #000;
+  
+  }
+
+
+.login {
+    width: 93px;
+    display: inline-flex;
+    padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: #5D37F3;
+    color: #FFF;
+    font-family: "FiraGO";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; 
+    border: none;
+    cursor: pointer;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.blog { 
+    color: #1A1A1F;
+    font-family: "FiraGO";
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 72px; 
+    margin-top: 128px;
+    margin-left: 89px;
+}
+
+.blogImg {
+    margin-top: 64px;
+    margin-right: 76px;
+}
+
+.categoriesContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 64px;
+
+}
+.categories {
+    gap: 32px;
+    display: flex;
+    flex-wrap:wrap;
+    width: 60vw;
+    justify-content: center;
+}
+
+.addBlogButton{
+    display:none;
+}
+
+.categories button {
+    height: 32px;
+    width: fit-content;
+    padding: 8px 16px;
+    border-radius: 30px;
+    border: none;
+    gap: 24px;
+    font-family: "FiraGO";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px; 
+}
+
+.categories .market {
+    background: rgba(255, 184, 47, 0.08);
+    color: #D6961C;
+    font-family: "FiraGO";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px; 
+}
+
+.categories .app {
+    background: rgba(28, 214, 125, 0.08);
+    color: #15C972;
+    font-family: 'FiraGO';
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px; 
+}
+
+.categories .ai {
+    background: #EEE1F7;
+    color: #B71FDD;
+    font-family: "FiraGO";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px; 
+
+}
+
+.categories .ui {
+    background: rgba(250, 87, 87, 0.08);
+    color: #DC2828;
+    font-family: 'FiraGO';
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px; 
+}
+
+.categories .research {
+    background: #E9EFE9;
+    color: #60BE16;
+    font-family: 'FiraGO';
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+.categories .figma {
+    background: rgba(8, 210, 174, 0.08);
+    color: #1AC7A8;
+    font-family: 'FiraGO';
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px; 
+
+}
+
+
+
+
+
+.blogContainer{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 32px;
+    margin-left: 76px;
+    margin-right: 76px;
+    margin-top: 64px;
+}
+.blogContainer .card {
+    width: 32%;
+    
+}
+
+.loginContainer {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.loginForm {
+    top: 314px;
+    position: absolute;
+    display: flex;
+
+    width: 480px;
+    height: 272px;
+    border-radius: 12px;
+    background: #FFF;
+}
+
+
+
+
+.cardImg {
+    height: 328px;
+    width: 100%;
+    border-radius: 12px;
+
+    object-fit: cover;
+}
+
+.author {
+    color: #1A1A1F;
+    font-family: "FiraGO";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; 
+
+}
+
+.publicDate {
+    color: #85858D;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px; 
+}
+
+.title {
+    color: #1A1A1F;
+    font-family: "FiraGO";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28px; 
+}
+
+.categoriesInBlog .category {
+
+    
+    
+  
+
+    border: none;
+    gap: 16px;
+    font-family: "FiraGO";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px; 
+   
+    height: 28px;
+    width: fit-content;
+    padding: 6px 10px;
+    border-radius: 30px;
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+}
+
+.categoriesInBlog {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+
+}
+
+.description {
+    color: #404049;
+    font-family: "FiraGO";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+}
