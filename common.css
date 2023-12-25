@@ -9,3 +9,7 @@
     font-family: "FiraGo";
     src: url(assets/fonts/Roman/FiraGO-Medium.otf)
 }
+
+.headerImg {
+    cursor: pointer;
+}

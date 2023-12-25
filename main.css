@@ -161,11 +161,12 @@ main {
 .blogContainer{
     display:flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     gap: 32px;
     margin-left: 76px;
     margin-right: 76px;
     margin-top: 64px;
+    justify-content: center;
+    
 }
 .blogContainer .card {
     width: 32%;
@@ -186,9 +187,10 @@ main {
     /* justify-content: center;     */
     flex-direction: column;
     width: 480px;
-    height: 272px;
+    min-height: 272px;
     border-radius: 12px;
     background: #FFF;
+    z-index: 1;
 }
 
 .exitButton {
@@ -340,6 +342,8 @@ main {
     font-weight: 400;
     line-height: 28px;
     margin-top: 16px;
+    height: 56px;
+    overflow: hidden;
 }
 
 .seeMore {
@@ -357,10 +361,156 @@ main {
     align-items: center;
 }
 
-/* .overlay {
-    width: 100%;
-    height: 300px;
-    background-color: #000;
-    opacity: 0.24;
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+   width: 100%;
+height: 100%;
+flex-shrink: 0;
+opacity: 0.24;
+background: #1A1A1F;
     
-} */
+} 
+
+
+.emailAndDate {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #85858D;
+
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 16px; /* 133.333% */
+margin-top: 8px;
+}
+
+.imageD {
+    width: 720px;
+    height: 328px;
+    border-radius: 12px;
+    object-fit: cover;
+    margin-top: -25px;
+}
+
+.authorD {
+    color: #1A1A1F;
+    font-family: "FiraGO";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 125% */
+    margin-top: 40px;
+}
+
+.titleD {
+    color: #1A1A1F;
+font-family: 'FiraGO';
+font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: 40px; /* 125% */
+margin-top: 24px;
+}
+
+.categoriesInBlogD {
+    display: flex;
+    gap: 16px;
+    height: 69px;
+    overflow: scroll;
+}
+
+.categoriesInBlogD .category {
+    margin-top: 24px;
+    border: none;
+    gap: 16px;
+    font-family: "FiraGO";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    height: 28px;
+    min-width: fit-content;
+    padding: 6px 10px;
+    border-radius: 30px;
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    
+}
+
+.descriptionD {
+    margin-top: 40px;
+    color: #404049;
+    font-family: "FiraGO";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px; 
+}
+
+.container {
+    width: 720px;
+}
+
+
+.redError {
+    display: flex;
+    align-items: center;
+    margin-left: 24px;
+    margin-top: 8px;
+    gap: 8px;
+}
+
+.emailLabel {
+    color: #EA1919;
+    font-family: 'FiraGO';
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; 
+}
+
+.done {
+    width: 64px;
+    margin-left: 208px;
+    margin-top: 64px;
+}
+
+.successedAuth {
+    margin-top: 16px;
+    margin-left: 98px;
+    margin-right: 98px;
+    color: #1A1A1F;
+    text-align: center;
+    font-family: 'FiraGO';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+}
+
+.okButton {
+
+    border-radius: 8px;
+    background: #5D37F3;
+    border: none;
+    margin-left: 24px;
+    margin-right: 24px;
+    margin-bottom: 40px;
+    margin-top: 48px;
+    display: flex;
+    width: 432px;
+    padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: #FFF;
+    font-family: 'FiraGO';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; 
+}
