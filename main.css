@@ -18,7 +18,9 @@ header {
   
   }
 
-
+ /* .login .dis {
+    display: none;
+} */
 .login {
     width: 93px;
     display: inline-flex;
@@ -76,6 +78,32 @@ main {
 
 .addBlogButton{
     display:none;
+
+}
+
+.addBlog {
+    width: 153px;
+    height: 40px;
+    color: #FFF;
+    font-family: 'FiraGO';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; 
+    display: inline-flex;
+    padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: #5D37F3;
+    border: none;
+    cursor: pointer;
+}
+
+.addBlogButton.active{
+    display:flex;
+    
 }
 
 .categories button {
@@ -513,4 +541,6 @@ margin-top: 24px;
     font-style: normal;
     font-weight: 500;
     line-height: 20px; 
+    cursor: pointer;
 }
+
