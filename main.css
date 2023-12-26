@@ -447,7 +447,7 @@ margin-top: 24px;
     display: flex;
     gap: 16px;
     height: 69px;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .categoriesInBlogD .category {
@@ -544,3 +544,10 @@ margin-top: 24px;
     cursor: pointer;
 }
 
+
+.backSvg {
+    left: 78px;
+    top: 120px;
+    position: absolute;
+    cursor: pointer;
+}

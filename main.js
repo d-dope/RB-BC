@@ -613,6 +613,7 @@ let okButton;
 let overlay;
 let sliderBlogs;
 
+
 let authHeader = {
   Authorization: `Bearer 823d881c4c01a9716d9358945e79ea1901c98205a2cacd8635bcaf5ae492c58e`
 };
@@ -676,6 +677,7 @@ function createCategoryButton(categoryData) {
 headerImg.addEventListener("click", function(){
   window.location.href = "index.html"
 })
+
 
 
 
@@ -750,6 +752,8 @@ function createBlogCard(card) {
 
 // Function to open detailed view of a blog
 function openDetailedView(card) {
+
+ 
   
   categoriesContainer.style.display = "none";
   main.innerHTML = "";
@@ -769,6 +773,17 @@ function openDetailedView(card) {
   })
     .then((response) => response.json())
     .then((data) => {
+
+      let backSvg = document.createElement('img')
+      backSvg.src = "assets/images/Arrow (2).svg"
+      backSvg.classList.add('backSvg')
+      blogsContainer.appendChild(backSvg)
+
+      backSvg.addEventListener('click', function(){
+        window.location.href = 'index.html'
+      })
+
+
       const detailedView = document.createElement("div");
       detailedView.classList.add("detailed-view");
       detailedView.innerHTML = `
@@ -797,9 +812,12 @@ function openDetailedView(card) {
     .catch((error) => {
       console.error("Error fetching blog details:", error);
     });
-
+     
+   
 
     // slider
+
+    
 
     let sliderDesc = document.createElement('div')
     sliderDesc.classList.add("sliderDesc")
@@ -822,102 +840,116 @@ function openDetailedView(card) {
     svgPost.classList.add('svgPost')
     svgsDiv.appendChild(svgPost)
 
+    
+
+    let sliderBlogs = document.createElement('div')
+    sliderBlogs.classList.add('sliderBlogs')
+    sliderBlogs.appendChild(cardContainer);
+    document.body.appendChild(sliderBlogs)
 
     
     
-    // const similarBlogs = filterBlogsByCategories(card.categories);
-
-    // // Display similar articles in the sliderBlogs section
-    // sliderBlogs.innerHTML = '';
-    // similarBlogs.forEach((blog) => {
-    //   createBlogCardInSlider(blog);
-    // });
+    const similarBlogs = findRelatedBlogs(blog.categories);
+  
+    // Display similar articles in the sliderBlogs section
+    sliderBlogs.innerHTML = '';
+    similarBlogs.forEach((blog) => {
+      createBlogCardInSlider(blog);
+    });
    
 
 
 }
 
-// function filterBlogsByCategories(categories) {
-//   const similarBlogs = blogs.filter((blog) => {
-//     // Check if the blog has at least one common category with the detailed blog
-//     return blog.categories.some((cat) => categories.some((detailedCat) => detailedCat.id === cat.id));
-//   });
-//   return similarBlogs;
-// }
+function filterBlogsByCategories(categories) {
+  const similarBlogs = blogs.filter((blog) => {
+    // Check if the blog has at least one common category with the detailed blog
+    return blog.categories.some((cat) => categories.some((detailedCat) => detailedCat.id === cat.id));
+  });
+  return similarBlogs;
+}
 
 
-// // Function to create a blog card in the sliderBlogs section
-// function createBlogCardInSlider(card) {
+// Function to create a blog card in the sliderBlogs section
+function createBlogCardInSlider(card) {
 
-//   let cats = "";
-//   card.categories.forEach((cat) => {
-//     cats += ` <span class="category" style="color: ${cat.text_color}; background-color: ${cat.background_color}" id="${cat.id}"> ${cat.title}  </span>`;
-//   });
+  let cats = "";
+  card.categories.forEach((cat) => {
+    cats += ` <span class="category" style="color: ${cat.text_color}; background-color: ${cat.background_color}" id="${cat.id}"> ${cat.title}  </span>`;
+  });
 
 
-//   let cardContainer = document.createElement("div");
-//   cardContainer.classList.add("cardInSlider");
-//   // ... (your existing code to create the card)
-//   const cardImage = document.createElement("img");
-//   cardImage.src = card.image;
-//   cardImage.alt = "";
-//   cardImage.classList.add("cardImg");
-//   const authorHeading = document.createElement("h3");
-//   authorHeading.classList.add("author");
-//   authorHeading.textContent = card.author;
-//   const publicDateParagraph = document.createElement("p");
-//   publicDateParagraph.classList.add("publicDate");
-//   publicDateParagraph.textContent = card.publish_date;
-//   const titleHeading = document.createElement("h1");
-//   titleHeading.classList.add("title");
-//   titleHeading.textContent = card.title;
-//   const categoriesContainer = document.createElement("div");
-//   categoriesContainer.classList.add("categoriesInBlog");
-//   categoriesContainer.innerHTML = cats;
-//   const descriptionHeading = document.createElement("h2");
-//   descriptionHeading.classList.add("description");
-//   descriptionHeading.textContent = card.description;
-//   const seeMoreContainer = document.createElement("div");
-//   seeMoreContainer.classList.add("seeMoreDiv");
-//   const seeMoreLink = document.createElement("a");
-//   seeMoreLink.classList.add("seeMore");
-//   seeMoreLink.id = "seeMoreLink";
-//   seeMoreLink.textContent = "სრულად ნახვა";
-//   // seeMoreLink.setAttribute("href", "pages/blog/blog.html");
-//   const arrowImage = document.createElement("img");
-//   arrowImage.src = "assets/images/Arrow (1).svg";
-//   arrowImage.alt = "SVG Image";
-//   arrowImage.classList.add("svgImageRow");
+  let cardContainer = document.createElement("div");
+  cardContainer.classList.add("cardInSlider");
+  // ... (your existing code to create the card)
+  const cardImage = document.createElement("img");
+  cardImage.src = card.image;
+  cardImage.alt = "";
+  cardImage.classList.add("cardImg");
+  const authorHeading = document.createElement("h3");
+  authorHeading.classList.add("author");
+  authorHeading.textContent = card.author;
+  const publicDateParagraph = document.createElement("p");
+  publicDateParagraph.classList.add("publicDate");
+  publicDateParagraph.textContent = card.publish_date;
+  const titleHeading = document.createElement("h1");
+  titleHeading.classList.add("title");
+  titleHeading.textContent = card.title;
+  const categoriesContainer = document.createElement("div");
+  categoriesContainer.classList.add("categoriesInBlog");
+  categoriesContainer.innerHTML = cats;
+  const descriptionHeading = document.createElement("h2");
+  descriptionHeading.classList.add("description");
+  descriptionHeading.textContent = card.description;
+  const seeMoreContainer = document.createElement("div");
+  seeMoreContainer.classList.add("seeMoreDiv");
+  const seeMoreLink = document.createElement("a");
+  seeMoreLink.classList.add("seeMore");
+  seeMoreLink.id = "seeMoreLink";
+  seeMoreLink.textContent = "სრულად ნახვა";
+  // seeMoreLink.setAttribute("href", "pages/blog/blog.html");
+  const arrowImage = document.createElement("img");
+  arrowImage.src = "assets/images/Arrow (1).svg";
+  arrowImage.alt = "SVG Image";
+  arrowImage.classList.add("svgImageRow");
 
-//   seeMoreContainer.appendChild(seeMoreLink);
-//   seeMoreContainer.appendChild(arrowImage);
+  seeMoreContainer.appendChild(seeMoreLink);
+  seeMoreContainer.appendChild(arrowImage);
 
-//   cardContainer.appendChild(cardImage);
-//   cardContainer.appendChild(authorHeading);
-//   cardContainer.appendChild(publicDateParagraph);
-//   cardContainer.appendChild(titleHeading);
-//   cardContainer.appendChild(categoriesContainer);
-//   cardContainer.appendChild(descriptionHeading);
-//   cardContainer.appendChild(seeMoreContainer);
+  cardContainer.appendChild(cardImage);
+  cardContainer.appendChild(authorHeading);
+  cardContainer.appendChild(publicDateParagraph);
+  cardContainer.appendChild(titleHeading);
+  cardContainer.appendChild(categoriesContainer);
+  cardContainer.appendChild(descriptionHeading);
+  cardContainer.appendChild(seeMoreContainer);
 
 
   
-//   sliderBlogs = document.createElement('div')
-//     sliderBlogs.classList.add('sliderBlogs')
+  sliderBlogs.innerHTML = '';
     
-//   const parentContainer = document.querySelector(".blogContainer");
-//   parentContainer.appendChild(cardContainer);
-//   // Append the card to the sliderBlogs section
-//   sliderBlogs.appendChild(cardContainer);
-// }
+
+  // Append the card to the sliderBlogs section
+
+ 
+}
 
 // // Function to filter blogs by category ID
 // function filterBlogsByCategoryId(categoryId) {
+//   debugger
 //   let filtered = blogs.filter((blog) => {
 //     return blog.categories.some((cat) => cat.id == categoryId);
 //   });
 //   return filtered;
 // }
+
+function findRelatedBlogs(categories ) {
+   return blogs.filter(blog  => {
+    return blog.categories.some(category => categories.includes(category))
+  })
+  
+}
+
 
 // Event listener for login button
 loginButton.addEventListener("click", () => {
@@ -1153,14 +1185,14 @@ function greenLoginForm() {
   okButton = document.createElement("button");
   okButton.textContent = "კარგი";
   okButton.classList.add("okButton");
+  okButton.setAttribute("href", "index.html")
   loginForm.appendChild(okButton);
 
 // ... (your existing code)
 
 // ... (your existing code)
 okButton.addEventListener('click', function () {
-  // Redirect to index.html
-  window.location.assign= 'index.html';
+ 
 
   // Modify the class of loginButton to make it look like addBlogButton
   const loginButton = document.querySelector(".loginButton");
@@ -1174,8 +1206,9 @@ okButton.addEventListener('click', function () {
   // document.body.removeChild(loginForm);
 
   let addBlog = document.querySelector('.addBlog')
+
   addBlog.addEventListener('click', function(){
-    window.location.href='pages/addBlog/addBlog.html';
+    window.location.href = '/pages/addBlog/addBlog.html'
   })
 
 });
