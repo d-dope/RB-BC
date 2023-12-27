@@ -332,10 +332,6 @@ main {
 
 .categoriesInBlog .category {
 
-    
-    
-  
-
     border: none;
     gap: 16px;
     font-family: "FiraGO";
@@ -359,7 +355,10 @@ main {
     flex-wrap: wrap;
     gap: 16px;
     margin-top: 16px;
-
+    height: 40px;
+    /* overflow: auto; */
+    overflow-y: auto;
+    overflow-x: auto;
 }
 
 .description {
@@ -551,3 +550,57 @@ margin-top: 24px;
     position: absolute;
     cursor: pointer;
 }
+
+
+
+.sliderBlogs{
+    display:flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    flex-wrap:wrap;
+    height: 600px;
+    column-gap:30px;
+    margin: 0px 76px 40px 76px;
+
+
+ 
+
+}
+
+
+.sliderBlogs .card{
+    width:32%;
+}
+
+.sliderDesc {
+    display: flex;
+    justify-content: space-between;
+}
+
+.svgPrev {
+    fill: #ffffff;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    
+    background: #E4E3EB;
+    border-radius: 50%;
+}
+
+.svgPost {
+    width: 44px;
+    height: 44px;
+display: flex;
+    fill: #5D37F3;
+}
+
+.svgsDiv {
+    display: flex;
+    gap: 24px;
+
+}
+
+.sliderDesc {
+    margin: 98px 76px 40px 76px;
+}
+
