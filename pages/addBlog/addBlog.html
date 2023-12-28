@@ -1,13 +1,108 @@
 <html>
     <head>
         <link rel="stylesheet" href="../../common.css">
-        
+        <link rel="stylesheet" href="../../main.css">
+        <link rel="stylesheet" href="addBlog.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
     </head>
     <body>
-        
 
-            <h1>Welcome</h1>
+        <header>
+            <img class="headerImg" src="../../assets/images/LOGO-02 3.png" alt="">
+            
+          
+        </header>
+        <img class="arrow4" src="../../assets/images/Arrow (4).svg" alt="">
+        <form>
+            <h1 class="addBlogHeader" >ბლოგის დამატება</h1>
+            <h3 class="uploadImg" >ატვირთეთ ფოტო</h3>
+            <div class="uploadFile">
 
+                <input type="file" id="fileInput" style="display: none;">
+
+                
+                <img src="/assets/images/folder-add.png" alt="">
+                
+                <label  class="dropFile" for="fileInput">
+                    <p>ჩააგდეთ ფაილი აქ ან </p>
+                    <span class="chooseFile">აირჩიეთ ფაილი</span>
+                </label>
+
+
+                
+               
+
+
+            </div>
+          
+
+            <div class="authorAndTitle">
+                <div class="authorDiv">
+                    <h4>ავტორი *</h4>
+                    <input class="nameAuthor" type="text" placeholder="შეიყვნეთ ავტორი">
+                    <div class="authorRequirements">
+                        <p class="p1" >• მინიმუმ 4 სიმბოლო</p> 
+                        <p class="p2" >• მინიმუმ ორი სიტყვა </p>
+                        <p class="p3" >• მხოლოდ ქართული სიმბოლოები </p>  
+                    </div>
+                </div>
+                <div class="titleNecc">
+                    <h4>სათური *</h4>
+                    <input class="nameTitle" type="text" placeholder="შეიყვნეთ სათაური">
+                    <p class="minTwoSymbol" >მინიმუმ 2 სიმბოლო</p>
+                </div>
+                
+            </div>
+            
+            <h2 class="blogWords" >აღწერა *</h2>
+            <input class="blogWordsInput" type="text" placeholder="შეიყვნეთ აღწერა">
+            <p class="minTwoWords" >მინიმუმ 2 სიმბოლო</p>
+
+            <div class="publicDateAndCategory">
+                <div class="publicDateNecc">
+                    <h4>გამოქვეყნების თარიღი *</h4>
+                    <input  class="publicInput" type="date" name="" id="">
+                </div>
+                <div class="categoryNess">
+                    <h4>კატეგორია *</h4>
+                    <select aria-placeholder="აირჩიეთ კატეგორია" name="" id="categoriesChoose" multiple>
+                        <option value="1">cat1</option>
+                        <option value="2">cat2</option>
+                        <option value="3">cat3</option>
+                        <option value="4">cat4</option>
+                        <option value="5">cat5</option>
+                        <option value="6">cat6</option>
+                    </select>
+                    
+                </div>
+            </div>                    
+                    
+            <div class="emailInUpload">
+                <p class="emailInUploadName">ელ-ფოსტა</p>
+                <input class="rbEmail" type="email" placeholder="Example@redbery.ge">
+                <!-- <div class="infoCircle">
+                    <img src="../../assets/images/info-circle.svg" alt="">
+                    <span>მეილი უნდა მთავრდებოდეს @redberry.ge-ით</span>
+                </div> -->
+               
+
+            </div>
+
+            <div class="makePublic">
+                <button>გამოქვეყნება</button>
+            </div>
+                    
+                    
+                 
+                    
+
+        </form>
+        <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
+        <script>
+            new MultiSelectTag('categoriesChoose')  // id
+            
+        </script>
+        <script src="addBlog.js"></script>
         <script src="../../main.js"></script>
     </body>
 </html>

@@ -556,9 +556,10 @@ margin-top: 24px;
 .sliderBlogs{
     display:flex;
     flex-direction: column;
-    overflow-y: scroll;
+    overflow-y: hidden;
+    overflow-x: scroll;
     flex-wrap:wrap;
-    height: 600px;
+    height: 630px;
     column-gap:30px;
     margin: 0px 76px 40px 76px;
 

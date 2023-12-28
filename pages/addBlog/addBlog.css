@@ -1,0 +1,339 @@
+header {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    margin: 40px 25% 110px 18.75%;
+    width: 56.25%;
+}
+
+form .addBlogHeader {
+    color: #1A1A1F;
+    font-family: 'FiraGO';
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 40px; 
+}
+
+
+.uploadFile {
+    width: 100%;
+    height: 180px;
+    border-radius: 12px;
+    border: 1px dashed #85858D;
+    background: #F4F3FF;
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.uploadFile img {
+    width: 40px;
+height: 40px;
+
+}
+.authorAndTitle {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+
+.publicDateAndCategory {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+}
+
+.infoCircle {
+    display: flex;
+}
+
+.makePublic {
+    display: flex;
+    justify-content: end;
+}
+
+.uploadImg {
+    color: #1A1A1F;
+    font-family: 'FiraGO';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;  
+    margin-top: 40px;
+}
+
+.uploadFile img {
+    margin-top: 48px;
+}
+
+
+.dropFile {
+    display: flex;
+    gap: 4px;
+    margin-top: 24px;
+    margin-bottom: 48px;
+}
+
+.dropFile span {
+    color: #1A1A1F;
+    font-family: 'FiraGO';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    text-decoration-line: underline;
+}
+
+.dropFile p{
+    color: #1A1A1F;
+    font-family: 'FiraGO';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; 
+
+}
+
+.authorAndTitle {
+    margin-top: 26px;
+    gap: 24px;
+}
+
+.titleNess {
+    width: 49%;
+    /* justify-content: end; */
+    display: flex;
+    flex-direction: column;
+}
+
+.titleNecc, .authorDiv, .publicDateNecc, .categoryNess {
+    width: 49%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.titleNecc h4, .authorDiv h4, .categoryNess h4, .publicDateNecc h4 {
+    color: #1A1A1F;
+    font-family: 'FiraGO';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; 
+}
+
+.titleNecc input, .authorDiv input {
+    border-radius: 12px;
+    border: 1px solid #E4E3EB;
+    background: #FCFCFD;
+    height: 44px;
+    color: #85858D;
+    font-family: 'FiraGO';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 16px;
+    margin-top: 8px;
+}
+
+.titleNecc p {
+    color: #85858D;
+    font-family: 'FiraGO';
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; 
+    width: 100%;
+    margin-top: 8px;
+}
+
+.authorRequirements{
+    color: #85858D;
+    font-family: 'FiraGO';
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; 
+    width: 100%;
+    margin-left: 10px;
+    margin-top: 8px;
+    min-height: 60px;
+    display: flex;
+    row-gap: 10px;
+    flex-direction: column;
+}
+
+.blogWords {
+    color: #1A1A1F;
+    font-family: 'FiraGO';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; 
+    margin-top: 24px;
+}
+
+.blogWordsInput {
+    width: 100%;
+    height: 124px;
+    border-radius: 12px;
+    border: 1px solid #E4E3EB;
+    background: #FCFCFD;
+    padding-top: 12px;
+    padding-bottom: 92px;
+    padding-left: 16px;
+    color: #85858D;
+    font-family: 'FiraGO';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; 
+}
+
+.minTwoWords {
+    color: #85858D;
+    font-family: 'FiraGO';
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; 
+    margin-top: 8px;
+}
+
+.publicDateAndCategory {
+    display: flex;
+    justify-content: space-between;
+}
+
+.publicDateNecc {
+    width: 49%;
+    display: flex;
+    flex-direction: column;
+}
+
+.emailInUploadName {
+    color: #1A1A1F;
+    font-family: 'FiraGO';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    margin-top: 24px;
+}
+
+.publicInput {
+    
+    height: 44px;
+    color: #1A1A1F;
+    font-family: 'FiraGO';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; 
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 16px;
+    display: flex;
+    flex-direction: row-reverse;
+    border-radius: 12px;
+    border: 1px solid #E4E3EB;
+    background: #FCFCFD;
+    margin-top: 8px;
+}
+
+#categoriesChoose {
+    border-radius: 12px;
+    border: 1px solid #E4E3EB;
+    background: #FCFCFD;
+    height: 44px;
+    color: #85858D;
+    font-family: 'FiraGO';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; 
+    margin-top: 8px;
+
+}
+
+
+.rounded{
+    border-radius: 12px;
+    border: 1px solid #E4E3EB;
+    background: #FCFCFD;
+    height: 44px;
+    color: #85858D;
+    font-family: 'FiraGO';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; 
+    margin-top: 8px;
+    border-radius: 50%;
+}
+
+.emailInUpload {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.emailInUpload input {
+    width: 49%;     
+    height: 44px;
+    border-radius: 12px;
+    border: 1px solid #E4E3EB;
+    background: #FCFCFD;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 16px;
+    margin-top: 8px;
+
+}
+.makePublic{
+    width: 100%;
+    display: flex;
+
+}
+.makePublic button {
+    display: flex;
+    width: 288px;
+    padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    color: #FFF;
+    font-family: 'FiraGO';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    margin-top: 40px;
+    border: none;
+    border-radius: 8px;
+    background: #E4E3EB;
+    width: 49%;
+    align-items: center;
+    justify-content:center ;
+}
+
+.arrow4 {
+    margin-left: 76px;
+    margin-top: 40px;
+}
+
+.mult-select-tag .rounded {
+ 
+}

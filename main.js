@@ -583,7 +583,7 @@ function greenLoginForm() {
     let addBlog = document.querySelector('.addBlog')
 
     addBlog.addEventListener('click', function () {
-      window.location.href = '/pages/addBlog/addBlog.html'
+      document.location.href = '/pages/addBlog/addBlog.html'
       document.body.style.overflow = 'scroll';    })
 
   });
