@@ -450,7 +450,7 @@ function appearLogin() {
   let exitSvg = document.createElement("img");
   exitButton.classList.add("exitButton");
   exitSvg.classList.add("exitSvg");
-  exitSvg.src = "/assets/images/add.svg";
+  exitSvg.src = "assets/images/add.svg";
   exitSvg.alt = "Exit";
   exitButton.appendChild(exitSvg);
   loginForm.appendChild(exitButton);
@@ -607,7 +607,7 @@ function greenLoginForm() {
     let addBlog = document.querySelector('.addBlog')
 
     addBlog.addEventListener('click', function () {
-      document.location.href = '/pages/addBlog/addBlog.html'
+      document.location.href = 'pages/addBlog/addBlog.html'
       document.body.style.overflow = 'scroll';    })
 
   });

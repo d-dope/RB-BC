@@ -79,7 +79,7 @@ rbEmail.addEventListener('input', validateEmail);
 function createFileInput() {
     uploadFile.innerHTML = `
     <input type="file" id="fileInput" style="display: none;">
-    <img src="/assets/images/folder-add.png" alt="">
+    <img src="assets/images/folder-add.png" alt="">
     <label  class="dropFile" for="fileInput">
         <p>ჩააგდეთ ფაილი აქ ან </p>
         <span class="chooseFile">აირჩიეთ ფაილი</span>
@@ -400,7 +400,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let exitSvg = document.createElement("img");
         exitButton.classList.add("exitButton");
         exitSvg.classList.add("exitSvg");
-        exitSvg.src = "/assets/images/add.svg";
+        exitSvg.src = "assets/images/add.svg";
         exitSvg.alt = "Exit";
         exitButton.appendChild(exitSvg);
         loginForm.appendChild(exitButton);
