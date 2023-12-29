@@ -450,7 +450,7 @@ function appearLogin() {
   let exitSvg = document.createElement("img");
   exitButton.classList.add("exitButton");
   exitSvg.classList.add("exitSvg");
-  exitSvg.src = "assets/images/add.svg";
+  exitSvg.src = "../../assets/images/add.svg";
   exitSvg.alt = "Exit";
   exitButton.appendChild(exitSvg);
   loginForm.appendChild(exitButton);
