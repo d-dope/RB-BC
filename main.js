@@ -1,6 +1,18 @@
 let blogsAPIUrl = 'https://api.blog.redberryinternship.ge/api/blogs';
 let categoriesURL = 'https://api.blog.redberryinternship.ge/api/categories';
 let blogsAPIUrlId = 'https://api.blog.redberryinternship.ge/api/blogs/1';
+
+let authHeader = {
+  Authorization: `Bearer 823d881c4c01a9716d9358945e79ea1901c98205a2cacd8635bcaf5ae492c58e`
+};
+
+let main = document.querySelector("main")
+let blogsContainer = document.querySelector(".blogContainer");
+let categoriesDiv = document.querySelector(".categories");
+let categoriesContainer = document.querySelector(".categoriesContainer")
+let loginButton = document.querySelector(".loginButton");
+let loginContainer = document.querySelector(".loginContainer");
+let headerImg = document.querySelector(".headerImg")
 let blogs;
 let filteredBlogs;
 let categories;
@@ -14,18 +26,7 @@ let overlay;
 let sliderBlogs;
 let sliderDesc;
 
-
-
-let authHeader = {
-  Authorization: `Bearer 823d881c4c01a9716d9358945e79ea1901c98205a2cacd8635bcaf5ae492c58e`
-};
-let main = document.querySelector("main")
-let blogsContainer = document.querySelector(".blogContainer");
-let categoriesDiv = document.querySelector(".categories");
-let categoriesContainer = document.querySelector(".categoriesContainer")
-let loginButton = document.querySelector(".loginButton");
-let loginContainer = document.querySelector(".loginContainer");
-let headerImg = document.querySelector(".headerImg")
+let filter1 = JSON.parse(localStorage.getItem('filterCategory')) || [];
 
 
 // Load blogs on page load
@@ -36,6 +37,11 @@ fetch(blogsAPIUrl, {
   .then((res) => {
     blogs = res.data;
     filteredBlogs = blogs;
+    if(filter1.length > 0){
+      filteredBlogs = findRelatedBlogs(filter1)
+    }else{
+      filteredBlogs = blogs;
+    }
 
     filteredBlogs.forEach((blog) => {
       blogsContainer.appendChild(createBlogCard(blog));
@@ -43,6 +49,7 @@ fetch(blogsAPIUrl, {
   });
 
 
+  
   // Load categories on page load
 fetch(categoriesURL, {
     headers: authHeader,
@@ -58,7 +65,6 @@ fetch(categoriesURL, {
 
 
 
-
 // Function to create a category button
 function createCategoryButton(categoryData) {
   let button = document.createElement("button");
@@ -67,10 +73,34 @@ function createCategoryButton(categoryData) {
   button.style.color = categoryData.text_color;
   button.style.backgroundColor = categoryData.background_color;
   button.style.cursor = "pointer";
+  
+  if(filter1.length > 0 && filter1.some(category => category.id == categoryData.id)){
+    button.classList.toggle("active");
+  }
 
   button.addEventListener("click", () => {
-    button.classList.toggle("active");
-    filteredBlogs = filterBlogsByCategoryId(categoryData.id);
+    
+    if(button.classList.contains('active')){
+      button.classList.remove('active')
+
+      filter1 = filter1.filter(c => {
+        return c.id != categoryData.id
+
+      })
+ 
+      console.log(filter1)
+    } else {
+      button.classList.add('active')
+      filter1.push(categoryData)
+    }
+   
+    localStorage.setItem('filterCategory', JSON.stringify(filter1))
+  
+    if(filter1.length > 0){
+      filteredBlogs = findRelatedBlogs(filter1);
+    } else {
+      filteredBlogs = blogs;
+    }
     blogsContainer.innerHTML = '';
     filteredBlogs.forEach((blog) => {
       blogsContainer.appendChild(createBlogCard(blog))
@@ -98,32 +128,40 @@ function createBlogCard(card) {
 
   let cardContainer = document.createElement("div");
   cardContainer.classList.add("card");
+
   const cardImage = document.createElement("img");
   cardImage.src = card.image;
   cardImage.alt = "";
   cardImage.classList.add("cardImg");
+
   const authorHeading = document.createElement("h3");
   authorHeading.classList.add("author");
   authorHeading.textContent = card.author;
+
   const publicDateParagraph = document.createElement("p");
   publicDateParagraph.classList.add("publicDate");
   publicDateParagraph.textContent = card.publish_date;
+
   const titleHeading = document.createElement("h1");
   titleHeading.classList.add("title");
   titleHeading.textContent = card.title;
+
   const categoriesContainer = document.createElement("div");
   categoriesContainer.classList.add("categoriesInBlog");
   categoriesContainer.innerHTML = cats;
+
   const descriptionHeading = document.createElement("h2");
   descriptionHeading.classList.add("description");
   descriptionHeading.textContent = card.description;
+
   const seeMoreContainer = document.createElement("div");
   seeMoreContainer.classList.add("seeMoreDiv");
+
   const seeMoreLink = document.createElement("a");
   seeMoreLink.classList.add("seeMore");
   seeMoreLink.id = "seeMoreLink";
   seeMoreLink.textContent = "სრულად ნახვა";
-  // seeMoreLink.setAttribute("href", "pages/blog/blog.html");
+
   const arrowImage = document.createElement("img");
   arrowImage.src = "assets/images/Arrow (1).svg";
   arrowImage.alt = "SVG Image";
@@ -149,19 +187,9 @@ function createBlogCard(card) {
   return cardContainer;
 }
 
-// function createBlogCardInSlider(card) {
-//   let cardContainer = document.createElement("div");
-//   cardContainer.classList.add("cardInSlider");
-//   // ... (your existing code to create the card)
-
-//   // Append the card to the sliderBlogs section
-//   sliderBlogs.appendChild(cardContainer);
-// }
 
 // Function to open detailed view of a blog
 function openDetailedView(card) {
-
-
 
   categoriesContainer.style.display = "none";
   main.innerHTML = "";
@@ -181,7 +209,7 @@ function openDetailedView(card) {
   card.categories.forEach((cat) => {
     cats += ` <span class="category" style="color: ${cat.text_color}; background-color: ${cat.background_color}" id="${cat.id}"> ${cat.title}  </span>`;
   });
-  // Include the authorization header
+ 
   let authHeader = {
     Authorization: `Bearer 823d881c4c01a9716d9358945e79ea1901c98205a2cacd8635bcaf5ae492c58e`
   };
@@ -276,7 +304,7 @@ svgsDiv.appendChild(svgPost);
   sliderBlogs = document.createElement('div')
   sliderBlogs.classList.add('sliderBlogs')
 
-  // sliderBlogs.appendChild(cardContainer);
+  
 
 
 
@@ -320,33 +348,40 @@ function createBlogCardInSlider(card) {
 
   let cardContainer = document.createElement("div");
   cardContainer.classList.add("cardInSlider");
-  // ... (your existing code to create the card)
   const cardImage = document.createElement("img");
+
   cardImage.src = card.image;
   cardImage.alt = "";
   cardImage.classList.add("cardImg");
+
   const authorHeading = document.createElement("h3");
   authorHeading.classList.add("author");
   authorHeading.textContent = card.author;
+
   const publicDateParagraph = document.createElement("p");
   publicDateParagraph.classList.add("publicDate");
   publicDateParagraph.textContent = card.publish_date;
+  
   const titleHeading = document.createElement("h1");
   titleHeading.classList.add("title");
   titleHeading.textContent = card.title;
+
   const categoriesContainer = document.createElement("div");
   categoriesContainer.classList.add("categoriesInBlog");
   categoriesContainer.innerHTML = cats;
+
   const descriptionHeading = document.createElement("h2");
   descriptionHeading.classList.add("description");
   descriptionHeading.textContent = card.description;
+
   const seeMoreContainer = document.createElement("div");
   seeMoreContainer.classList.add("seeMoreDiv");
+
   const seeMoreLink = document.createElement("a");
   seeMoreLink.classList.add("seeMore");
   seeMoreLink.id = "seeMoreLink";
   seeMoreLink.textContent = "სრულად ნახვა";
-  // seeMoreLink.setAttribute("href", "pages/blog/blog.html");
+
   const arrowImage = document.createElement("img");
   arrowImage.src = "assets/images/Arrow (1).svg";
   arrowImage.alt = "SVG Image";
@@ -362,13 +397,6 @@ function createBlogCardInSlider(card) {
   cardContainer.appendChild(categoriesContainer);
   cardContainer.appendChild(descriptionHeading);
   cardContainer.appendChild(seeMoreContainer);
-
-
-
-  // sliderBlogs.innerHTML = '';
-
-
-  // Append the card to the sliderBlogs section
 
 
 
@@ -400,7 +428,7 @@ function findRelatedBlogs(categories) {
 
 // Event listener for login button
 loginButton.addEventListener("click", () => {
-  // let emailInput = document.querySelector(".emailInput").value;
+
   loginContainer.innerHTML = '';
   loginContainer.appendChild(appearLogin());
 
@@ -514,12 +542,12 @@ let emailCheckFunc = () => {
     emailInput.style.borderColor = 'red';
     redError.style.display = "flex";
   } else {
-    emailInput.style.borderColor = ''; // Reset the border color
+    emailInput.style.borderColor = ''; 
     redError.style.display = "none";
 
     // Perform the additional fetch request
     let userInfo = {
-      "email": emailInput.value // Use the actual email input value
+      "email": emailInput.value 
     };
 
     fetch("https://api.blog.redberryinternship.ge/api/login", {
@@ -563,22 +591,18 @@ function greenLoginForm() {
   okButton.setAttribute("href", "index.html")
   loginForm.appendChild(okButton);
 
-  // ... (your existing code)
 
-  // ... (your existing code)
   okButton.addEventListener('click', function () {
 
 
-    // Modify the class of loginButton to make it look like addBlogButton
     const loginButton = document.querySelector(".loginButton");
     const addBlogButton = document.querySelector(".addBlogButton");
 
     loginButton.style.display = 'none';
     addBlogButton.classList.add("active");
     loginForm.style.display = 'none'
-    // document.body.style.overflow = '';
     document.body.removeChild(overlay);
-    // document.body.removeChild(loginForm);
+    
 
     let addBlog = document.querySelector('.addBlog')
 

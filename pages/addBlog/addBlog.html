@@ -13,24 +13,11 @@
           
         </header>
         <img class="arrow4" src="../../assets/images/Arrow (4).svg" alt="">
-        <form>
+        <form class="form1">
             <h1 class="addBlogHeader" >ბლოგის დამატება</h1>
             <h3 class="uploadImg" >ატვირთეთ ფოტო</h3>
+
             <div class="uploadFile">
-
-                <input type="file" id="fileInput" style="display: none;">
-
-                
-                <img src="/assets/images/folder-add.png" alt="">
-                
-                <label  class="dropFile" for="fileInput">
-                    <p>ჩააგდეთ ფაილი აქ ან </p>
-                    <span class="chooseFile">აირჩიეთ ფაილი</span>
-                </label>
-
-
-                
-               
 
 
             </div>
@@ -66,12 +53,7 @@
                 <div class="categoryNess">
                     <h4>კატეგორია *</h4>
                     <select aria-placeholder="აირჩიეთ კატეგორია" name="" id="categoriesChoose" multiple>
-                        <option value="1">cat1</option>
-                        <option value="2">cat2</option>
-                        <option value="3">cat3</option>
-                        <option value="4">cat4</option>
-                        <option value="5">cat5</option>
-                        <option value="6">cat6</option>
+                    
                     </select>
                     
                 </div>
@@ -80,16 +62,12 @@
             <div class="emailInUpload">
                 <p class="emailInUploadName">ელ-ფოსტა</p>
                 <input class="rbEmail" type="email" placeholder="Example@redbery.ge">
-                <!-- <div class="infoCircle">
-                    <img src="../../assets/images/info-circle.svg" alt="">
-                    <span>მეილი უნდა მთავრდებოდეს @redberry.ge-ით</span>
-                </div> -->
-               
+            
 
             </div>
 
             <div class="makePublic">
-                <button>გამოქვეყნება</button>
+                <button class="makePublic1">გამოქვეყნება</button>
             </div>
                     
                     
@@ -97,11 +75,7 @@
                     
 
         </form>
-        <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
-        <script>
-            new MultiSelectTag('categoriesChoose')  // id
-            
-        </script>
+     
         <script src="addBlog.js"></script>
         <script src="../../main.js"></script>
     </body>
