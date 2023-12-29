@@ -30,6 +30,7 @@ makePublic1.disabled = true
 
 
 let isFormValid = {
+    image: false,
     nameInput: false,
     title: false,
     description: false,          
@@ -42,7 +43,7 @@ form1.addEventListener('change', function(){
     validateNameAuthor();
     validateBlogWordsInput();
     validateNameTitle()
-    
+   
  
    
     if(isFormValid.email && isFormValid.nameInput && isFormValid.description && isFormValid.title){

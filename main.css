@@ -220,10 +220,14 @@ main {
     font-style: normal;
     font-weight: 500;
     line-height: 20px; 
-    cursor: pointer;
+   
     margin-top: 34px;
     margin-left: 24px;
     margin-bottom: 40px;
+}
+
+.chooseFile {
+    cursor: pointer;
 }
 
 
